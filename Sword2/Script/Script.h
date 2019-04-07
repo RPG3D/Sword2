@@ -6,8 +6,6 @@
 #include "File/INIReader.h"
 #include "lua.hpp"
 
-using namespace NS_SLUA;
-
 class Script
 {
 public:

@@ -15,7 +15,7 @@ include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Lua/include)
 link_directories(
     ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2/lib
     ${PROJECT_SOURCE_DIR}/ThirdParty/Ffmpeg/lib
-    ${PROJECT_SOURCE_DIR}/ThirdParty/Lua/lib/Win64
+    ${PROJECT_SOURCE_DIR}/ThirdParty/Lua/lib
     ${PROJECT_SOURCE_DIR}/ThirdParty/Fmod/lib/x64
     ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/lib/x64
     ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/lib/x64

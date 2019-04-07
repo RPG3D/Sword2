@@ -1,5 +1,5 @@
 /*
-** $Id: lua.h,v 1.347 2018/06/18 12:08:10 roberto Exp $
+** $Id: lua.h,v 1.332 2016/12/22 15:51:20 roberto Exp $
 ** Lua - A Scripting Language
 ** Lua.org, PUC-Rio, Brazil (http://www.lua.org)
 ** See Copyright Notice at the end of this file
@@ -12,18 +12,18 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-
 #include "luaconf.h"
 
+#define NS_SLUA slua
 
 #define LUA_VERSION_MAJOR	"5"
-#define LUA_VERSION_MINOR	"4"
-#define LUA_VERSION_NUM		504
-#define LUA_VERSION_RELEASE	"0"
+#define LUA_VERSION_MINOR	"3"
+#define LUA_VERSION_NUM		503
+#define LUA_VERSION_RELEASE	"4"
 
 #define LUA_VERSION	"Lua " LUA_VERSION_MAJOR "." LUA_VERSION_MINOR
 #define LUA_RELEASE	LUA_VERSION "." LUA_VERSION_RELEASE
-#define LUA_COPYRIGHT	LUA_RELEASE "  Copyright (C) 1994-2018 Lua.org, PUC-Rio"
+#define LUA_COPYRIGHT	LUA_RELEASE "  Copyright (C) 1994-2017 Lua.org, PUC-Rio"
 #define LUA_AUTHORS	"R. Ierusalimschy, L. H. de Figueiredo, W. Celes"
 
 
@@ -52,6 +52,7 @@
 #define LUA_ERRGCMM	5
 #define LUA_ERRERR	6
 
+namespace NS_SLUA {
 
 typedef struct lua_State lua_State;
 
@@ -148,9 +149,9 @@ LUA_API lua_State *(lua_newthread) (lua_State *L);
 
 LUA_API lua_CFunction (lua_atpanic) (lua_State *L, lua_CFunction panicf);
 
+LUA_API const lua_Number *(lua_version) (lua_State *L);
 
-LUA_API lua_Number (lua_version) (lua_State *L);
-
+LUA_API void (lua_setonlyluac)(lua_State *L, int v);
 
 /*
 ** basic stack manipulation
@@ -182,7 +183,7 @@ LUA_API lua_Number      (lua_tonumberx) (lua_State *L, int idx, int *isnum);
 LUA_API lua_Integer     (lua_tointegerx) (lua_State *L, int idx, int *isnum);
 LUA_API int             (lua_toboolean) (lua_State *L, int idx);
 LUA_API const char     *(lua_tolstring) (lua_State *L, int idx, size_t *len);
-LUA_API lua_Unsigned    (lua_rawlen) (lua_State *L, int idx);
+LUA_API size_t          (lua_rawlen) (lua_State *L, int idx);
 LUA_API lua_CFunction   (lua_tocfunction) (lua_State *L, int idx);
 LUA_API void	       *(lua_touserdata) (lua_State *L, int idx);
 LUA_API lua_State      *(lua_tothread) (lua_State *L, int idx);
@@ -247,9 +248,9 @@ LUA_API int (lua_rawgeti) (lua_State *L, int idx, lua_Integer n);
 LUA_API int (lua_rawgetp) (lua_State *L, int idx, const void *p);
 
 LUA_API void  (lua_createtable) (lua_State *L, int narr, int nrec);
-LUA_API void *(lua_newuserdatauv) (lua_State *L, size_t sz, int nuvalue);
+LUA_API void *(lua_newuserdata) (lua_State *L, size_t sz);
 LUA_API int   (lua_getmetatable) (lua_State *L, int objindex);
-LUA_API int  (lua_getiuservalue) (lua_State *L, int idx, int n);
+LUA_API int  (lua_getuservalue) (lua_State *L, int idx);
 
 
 /*
@@ -263,7 +264,7 @@ LUA_API void  (lua_rawset) (lua_State *L, int idx);
 LUA_API void  (lua_rawseti) (lua_State *L, int idx, lua_Integer n);
 LUA_API void  (lua_rawsetp) (lua_State *L, int idx, const void *p);
 LUA_API int   (lua_setmetatable) (lua_State *L, int objindex);
-LUA_API int   (lua_setiuservalue) (lua_State *L, int idx, int n);
+LUA_API void  (lua_setuservalue) (lua_State *L, int idx);
 
 
 /*
@@ -280,7 +281,9 @@ LUA_API int   (lua_pcallk) (lua_State *L, int nargs, int nresults, int errfunc,
 LUA_API int   (lua_load) (lua_State *L, lua_Reader reader, void *dt,
                           const char *chunkname, const char *mode);
 
+#ifdef _LUAC
 LUA_API int (lua_dump) (lua_State *L, lua_Writer writer, void *data, int strip);
+#endif // end _LUAC
 
 
 /*
@@ -288,8 +291,7 @@ LUA_API int (lua_dump) (lua_State *L, lua_Writer writer, void *data, int strip);
 */
 LUA_API int  (lua_yieldk)     (lua_State *L, int nresults, lua_KContext ctx,
                                lua_KFunction k);
-LUA_API int  (lua_resume)     (lua_State *L, lua_State *from, int narg,
-                               int *nres);
+LUA_API int  (lua_resume)     (lua_State *L, lua_State *from, int narg);
 LUA_API int  (lua_status)     (lua_State *L);
 LUA_API int (lua_isyieldable) (lua_State *L);
 
@@ -309,10 +311,8 @@ LUA_API int (lua_isyieldable) (lua_State *L);
 #define LUA_GCSETPAUSE		6
 #define LUA_GCSETSTEPMUL	7
 #define LUA_GCISRUNNING		9
-#define LUA_GCGEN		10
-#define LUA_GCINC		11
 
-LUA_API int (lua_gc) (lua_State *L, int what, ...);
+LUA_API int (lua_gc) (lua_State *L, int what, int data);
 
 
 /*
@@ -330,6 +330,7 @@ LUA_API size_t   (lua_stringtonumber) (lua_State *L, const char *s);
 
 LUA_API lua_Alloc (lua_getallocf) (lua_State *L, void **ud);
 LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
+
 
 
 /*
@@ -379,7 +380,7 @@ LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
 
 /*
 ** {==============================================================
-** compatibility macros
+** compatibility macros for unsigned conversions
 ** ===============================================================
 */
 #if defined(LUA_COMPAT_APIINTCASTS)
@@ -389,11 +390,6 @@ LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
 #define lua_tounsigned(L,i)	lua_tounsignedx(L,(i),NULL)
 
 #endif
-
-#define lua_newuserdata(L,s)	lua_newuserdatauv(L,s,1)
-#define lua_getuservalue(L,idx)	lua_getiuservalue(L,idx,1)
-#define lua_setuservalue(L,idx)	lua_setiuservalue(L,idx,1)
-
 /* }============================================================== */
 
 /*
@@ -458,8 +454,6 @@ struct lua_Debug {
   unsigned char nparams;/* (u) number of parameters */
   char isvararg;        /* (u) */
   char istailcall;	/* (t) */
-  unsigned short ftransfer;   /* (r) index of first value transferred */
-  unsigned short ntransfer;   /* (r) number of transferred values */
   char short_src[LUA_IDSIZE]; /* (S) */
   /* private part */
   struct CallInfo *i_ci;  /* active function */
@@ -469,7 +463,7 @@ struct lua_Debug {
 
 
 /******************************************************************************
-* Copyright (C) 1994-2018 Lua.org, PUC-Rio.
+* Copyright (C) 1994-2017 Lua.org, PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -491,5 +485,6 @@ struct lua_Debug {
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
 
+} // end NS_SLUA
 
 #endif

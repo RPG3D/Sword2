@@ -1,12 +1,11 @@
 /*
-** $Id: lapi.h,v 2.12 2017/11/07 13:25:26 roberto Exp $
+** $Id: lapi.h,v 2.9 2015/03/06 19:49:50 roberto Exp $
 ** Auxiliary functions from Lua API
 ** See Copyright Notice in lua.h
 */
 
 #ifndef lapi_h
 #define lapi_h
-
 
 #include "llimits.h"
 #include "lstate.h"

@@ -1,5 +1,5 @@
 /*
-** $Id: llex.h,v 1.82 2018/04/04 14:23:41 roberto Exp $
+** $Id: llex.h,v 1.79 2016/05/02 14:02:12 roberto Exp $
 ** Lexical Analyzer
 ** See Copyright Notice in lua.h
 */
@@ -10,6 +10,7 @@
 #include "lobject.h"
 #include "lzio.h"
 
+namespace NS_SLUA {
 
 #define FIRST_RESERVED	257
 
@@ -37,7 +38,7 @@ enum RESERVED {
 };
 
 /* number of reserved words */
-#define NUM_RESERVED	(cast_int(TK_WHILE-FIRST_RESERVED + 1))
+#define NUM_RESERVED	(cast(int, TK_WHILE-FIRST_RESERVED+1))
 
 
 typedef union {
@@ -81,5 +82,6 @@ LUAI_FUNC int luaX_lookahead (LexState *ls);
 LUAI_FUNC l_noret luaX_syntaxerror (LexState *ls, const char *s);
 LUAI_FUNC const char *luaX_token2str (LexState *ls, int token);
 
+} // end NS_SLUA
 
 #endif

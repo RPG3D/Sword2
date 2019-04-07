@@ -1,8 +1,6 @@
 #include "Script.h"
 #include "../GameManager/GameManager.h"
 
-using namespace NS_SLUA;
-
 Script::Script(const std::string & n)
 {
 	name = n;

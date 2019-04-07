@@ -1,0 +1,5 @@
+# Visual Studio 2017 user specific files
+.vs/
+.vscode/
+Build/
+TestGame/

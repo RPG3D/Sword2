@@ -14,5 +14,6 @@ include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2/include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/include)
 
+add_subdirectory(ThirdParty)
 add_subdirectory(Engine)
 add_subdirectory(Sword2)

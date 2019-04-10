@@ -3,7 +3,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 endif()
 
 cmake_minimum_required(VERSION 2.8.11)
-#project(SDL2 C)
+project(SDL2 C)
 
 # !!! FIXME: this should probably do "MACOSX_RPATH ON" as a target property
 # !!! FIXME:  for the SDL2 shared library (so you get an
@@ -265,7 +265,7 @@ if(EMSCRIPTEN)
 endif()
 
 if (NOT DEFINED SDL_SHARED_ENABLED_BY_DEFAULT)
-    set(SDL_SHARED_ENABLED_BY_DEFAULT OFF)
+    set(SDL_SHARED_ENABLED_BY_DEFAULT ON)
 endif()
 
 set(SDL_SUBSYSTEMS
@@ -1369,12 +1369,12 @@ elseif(WINDOWS)
 
   file(GLOB VERSION_SOURCES ${SDL2_SOURCE_DIR}/src/main/windows/*.rc)
   file(GLOB SDLMAIN_SOURCES ${SDL2_SOURCE_DIR}/src/main/windows/*.c)
-  # if(MINGW OR CYGWIN)
-  #   list(APPEND EXTRA_LIBS mingw32)
-  #   list(APPEND EXTRA_LDFLAGS "-mwindows")
-  #   set(SDL_CFLAGS "${SDL_CFLAGS} -Dmain=SDL_main")
-  #   list(APPEND SDL_LIBS "-lmingw32" "-lSDL2main" "-mwindows")
-  # endif()
+  if(MINGW OR CYGWIN)
+    list(APPEND EXTRA_LIBS mingw32)
+    list(APPEND EXTRA_LDFLAGS "-mwindows")
+    set(SDL_CFLAGS "${SDL_CFLAGS} -Dmain=SDL_main")
+    list(APPEND SDL_LIBS "-lmingw32" "-lSDL2main" "-mwindows")
+  endif()
 elseif(APPLE)
   # TODO: rework this all for proper MacOS X, iOS and Darwin support
 
@@ -1738,8 +1738,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS}")
 #   set_target_properties(SDL2main PROPERTIES DEBUG_POSTFIX ${SDL_CMAKE_DEBUG_POSTFIX})
 # endif()
 
-#imxqliu@live.com disable SDL_SHARED
-if(SDL_TEST)
+if(SDL_SHARED)
   add_library(SDL2 SHARED ${SOURCE_FILES} ${VERSION_SOURCES})
   if(APPLE)
     set_target_properties(SDL2 PROPERTIES

@@ -9,6 +9,8 @@ Engine* PakFile::engine = Engine::getInstance();
 PakFile PakFile::pakFile;
 PakFile * PakFile::this_ = &PakFile::pakFile;
 
+std::string PakFile::AssetDir;
+
 PakFile::PakFile()
 {
 	engine = Engine::getInstance();
@@ -395,10 +397,12 @@ int PakFile::readFile(const std::string & fileName, char ** s)
 	{
 		fName = fName.c_str() + 1;
 	}
-	if (File::fileExist(fName))
+
+	std::string DiskFile = AssetDir + "/" + fName;
+	if (File::fileExist(DiskFile))
 	{
 		int len;
-		return readFile(fName, s, &len);
+		return readFile(DiskFile, s, &len);
 	}
 	int fileID = hashFileName(fName);
 	return readFile(fileID, s);

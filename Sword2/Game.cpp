@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "Config\Config.h"
-
+#include "File/PakFile.h"
 
 Game::Game()
 {
@@ -25,6 +25,9 @@ int Game::run()
 	printf("Init Game Font\n");
 	//设置字体，s的空间交给引擎处理，无需delete
 	char * s = NULL;
+
+	PakFile ::AssetDir = Config::getInstance()->getAssetDir();
+
 	int len = PakFile::readFile(gameFont, &s);
 	if (s != NULL && len > 0)
 	{

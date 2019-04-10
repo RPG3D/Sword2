@@ -13,12 +13,17 @@ include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Lua)
 
 
 link_directories(
-    ${PROJECT_BINARY_DIR}/ThirdParty/SDL2/Debug
-    ${PROJECT_SOURCE_DIR}/ThirdParty/Ffmpeg/lib
-    ${PROJECT_BINARY_DIR}/ThirdParty/Lua/Debug
+
     ${PROJECT_SOURCE_DIR}/ThirdParty/Fmod/lib/x64
-    ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/lib/x64
-    ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/lib/x64
+    ${PROJECT_SOURCE_DIR}/ThirdParty/Ffmpeg/lib
+    
+    ${PROJECT_BINARY_DIR}/ThirdParty/SDL2/Debug
+
+    ${PROJECT_BINARY_DIR}/ThirdParty/Lua/Debug
+
+    ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/Debug
+    ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/Debug
+    ${PROJECT_SOURCE_DIR}/build/ThirdParty/freetype/Debug
 
 )
 

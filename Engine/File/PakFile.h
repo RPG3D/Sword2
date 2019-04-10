@@ -33,5 +33,7 @@ public:
 	static int readFile(unsigned int fileID, char ** s);
 	static int readFile(const std::string & fileName, char ** s);
 	static int readFile(const std::string & fileName, char ** s, int * len, const std::string & pakName = "", bool firstReadPak = false);
+
+	static std::string AssetDir;
 };
 

@@ -1,4 +1,5 @@
 #include "EngineBase.h"
+#include "File/PakFile.h"
 
 EngineBase* EngineBase::this_ = NULL;
 
@@ -1375,7 +1376,7 @@ InitErrorType EngineBase::initEngineBase(const std::string & windowCaption, int 
 		return videoError;
 	}
 
-	//fadeOutLogo();
+	fadeOutLogo();
 
 	resetEvent();
 
@@ -1568,7 +1569,7 @@ InitErrorType EngineBase::initSDL(const std::string & windowCaption, int wWidth,
 	SDL_ShowWindow(window);
 	SDL_RaiseWindow(window);
 
-	//fadeInLogo();
+	fadeInLogo();
 
 	TTF_Init();
 
@@ -2696,11 +2697,17 @@ void EngineBase::deleteVideoFromList(int index)
 
 _video EngineBase::createNewVideo(const std::string& fileName)
 {
-	printf("Open video %s\n", fileName.c_str());
-	if (!File::fileExist(fileName))
+	std::string FullFile = fileName;
+	printf("Open video %s\n", FullFile.c_str());
+	if (!File::fileExist(FullFile))
 	{
-		printf("Video:%s not exists\n", fileName.c_str());
-		return NULL;
+		FullFile = PakFile::AssetDir + "/" + fileName;
+		if (!File::fileExist(FullFile))
+		{
+			printf("Video:%s not exists\n", FullFile.c_str());
+			printf("Video:%s not exists\n", FullFile.c_str());
+			return NULL;
+		}
 	}
 	VideoStruct * v = new VideoStruct;
 	v->image.resize(0);
@@ -2719,13 +2726,13 @@ _video EngineBase::createNewVideo(const std::string& fileName)
 	v->soundRate = getVideoSoundRate(v);
 	initVideoTime(v);
 	setVideoTimePaused(v, true);
-	v->fileName = fileName;
+	v->fileName = FullFile;
 	setVideoRect((_video)v, NULL);
 	v->decodeEnd = false;
 	v->videoVolume = 1;
 	if (openVideoFile(v) < 0)
 	{
-		printf("Open video:%s error\n", fileName.c_str());
+		printf("Open video:%s error\n", FullFile.c_str());
 		freeVideo(v);
 		return NULL;
 	}
@@ -2839,7 +2846,7 @@ bool EngineBase::updateVideo(_video video)
 	}
 	if (v->soundSystem != NULL)
 	{
-		FMOD_System_Update(v->soundSystem);
+		//FMOD_System_Update(v->soundSystem);
 	}
 	else
 	{

@@ -25,9 +25,16 @@ public:
 
 	void getWindowSize(int * w, int * h);
 
+	std::string getAssetDir() const
+	{
+		return AssetDir;
+	}
+
 private:
 	static Config config;
 	static Config * this_;
+
+	std::string AssetDir = "D:\\Sword2Data";
 
 	int windowWidth = DEFAULT_WINDOW_WIDTH;
 	int windowHeight = DEFAULT_WINDOW_HEIGHT;

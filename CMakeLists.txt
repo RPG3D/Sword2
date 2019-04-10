@@ -11,8 +11,10 @@ include_directories(${PROJECT_SOURCE_DIR}/ThirdParty)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Ffmpeg/include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Fmod/include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2/include)
-include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/include)
-include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/include)
+include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image)
+include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/freetype/include)
+include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf)
+
 
 add_subdirectory(ThirdParty)
 add_subdirectory(Engine)

@@ -64,12 +64,12 @@
 /* #undef HAVE_MEMORY_H */
 /* #undef HAVE_SIGNAL_H */
 #define HAVE_STDARG_H 1
-/* #undef HAVE_STDINT_H */
+#define HAVE_STDINT_H 1
 /* #undef HAVE_STDIO_H */
 /* #undef HAVE_STDLIB_H */
 /* #undef HAVE_STRINGS_H */
 /* #undef HAVE_STRING_H */
-/* #undef HAVE_SYS_TYPES_H */
+#define HAVE_SYS_TYPES_H 1
 /* #undef HAVE_WCHAR_H */
 /* #undef HAVE_PTHREAD_NP_H */
 /* #undef HAVE_LIBUNWIND_H */

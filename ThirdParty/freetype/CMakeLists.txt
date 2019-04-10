@@ -328,7 +328,7 @@ if (NOT DISABLE_FORCE_DEBUG_POSTFIX)
 endif()
 
 
-add_library(freetype
+add_library(freetype STATIC
   ${PUBLIC_HEADERS}
   ${PUBLIC_CONFIG_HEADERS}
   ${PRIVATE_HEADERS}
@@ -347,11 +347,11 @@ if (WIN32)
     freetype PRIVATE _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS)
 endif ()
 
-if (BUILD_SHARED_LIBS)
-  set_target_properties(freetype PROPERTIES
-    VERSION ${LIBRARY_VERSION}
-    SOVERSION ${LIBRARY_SOVERSION})
-endif ()
+# if (BUILD_SHARED_LIBS)
+#   set_target_properties(freetype PROPERTIES
+#     VERSION ${LIBRARY_VERSION}
+#     SOVERSION ${LIBRARY_SOVERSION})
+# endif ()
 
 target_include_directories(
   freetype BEFORE  # Pick up ftconfig.h and ftoption.h generated above.
@@ -385,22 +385,22 @@ if (ZLIB_FOUND)
   target_include_directories(freetype PRIVATE ${ZLIB_INCLUDE_DIRS})
   list(APPEND PKG_CONFIG_REQUIRED_PRIVATE zlib)
 endif ()
-if (BZIP2_FOUND)
-  target_link_libraries(freetype PRIVATE ${BZIP2_LIBRARIES})
-  target_include_directories(freetype PRIVATE ${BZIP2_INCLUDE_DIR}) # not BZIP2_INCLUDE_DIRS
-  list(APPEND PKG_CONFIG_REQUIRED_PRIVATE bzip2)
-endif ()
+# if (BZIP2_FOUND)
+#   target_link_libraries(freetype PRIVATE ${BZIP2_LIBRARIES})
+#   target_include_directories(freetype PRIVATE ${BZIP2_INCLUDE_DIR}) # not BZIP2_INCLUDE_DIRS
+#   list(APPEND PKG_CONFIG_REQUIRED_PRIVATE bzip2)
+# endif ()
 if (PNG_FOUND)
   target_link_libraries(freetype PRIVATE ${PNG_LIBRARIES})
   target_compile_definitions(freetype PRIVATE ${PNG_DEFINITIONS})
   target_include_directories(freetype PRIVATE ${PNG_INCLUDE_DIRS})
   list(APPEND PKG_CONFIG_REQUIRED_PRIVATE libpng)
 endif ()
-if (HARFBUZZ_FOUND)
-  target_link_libraries(freetype PRIVATE ${HARFBUZZ_LIBRARIES})
-  target_include_directories(freetype PRIVATE ${HARFBUZZ_INCLUDE_DIRS})
-  list(APPEND PKG_CONFIG_REQUIRED_PRIVATE harfbuzz)
-endif ()
+# if (HARFBUZZ_FOUND)
+#   target_link_libraries(freetype PRIVATE ${HARFBUZZ_LIBRARIES})
+#   target_include_directories(freetype PRIVATE ${HARFBUZZ_INCLUDE_DIRS})
+#   list(APPEND PKG_CONFIG_REQUIRED_PRIVATE harfbuzz)
+# endif ()
 
 
 # Installation

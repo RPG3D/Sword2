@@ -24,6 +24,8 @@ link_directories(
     ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image/Debug
     ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/Debug
     ${PROJECT_SOURCE_DIR}/build/ThirdParty/freetype/Debug
+    ${PROJECT_SOURCE_DIR}/build/ThirdParty/zlib/Debug
+    ${PROJECT_SOURCE_DIR}/build/ThirdParty/SDL_image/libpng-1.6.32/Debug
 
 )
 
@@ -32,6 +34,10 @@ link_libraries(lua)
 link_libraries(SDL2-staticd)
 link_libraries(SDL2_image)
 link_libraries(SDL2_ttf)
+
+link_libraries(png_static)
+
+link_libraries(zlibstaticd)
 
 #ffmpeg lib
 link_libraries(avcodec)

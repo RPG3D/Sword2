@@ -17,7 +17,7 @@ set(SDL_TTF_BINARY_AGE 14)
 set(SDL_TTF_VERSION "${SDL_TTF_MAJOR_VERSION}.${SDL_TTF_MINOR_VERSION}.${SDL_TTF_MICRO_VERSION}")
 
 ##### library generation #####
-add_library(SDL2_ttf SDL_ttf.c SDL_ttf.h)
+add_library(SDL2_ttf STATIC SDL_ttf.c SDL_ttf.h)
 target_link_libraries(SDL2_ttf SDL2 Freetype)
 target_include_directories(SDL2_ttf PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/SDL2>)
 

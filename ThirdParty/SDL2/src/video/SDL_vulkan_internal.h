@@ -48,7 +48,7 @@
 #define VK_USE_PLATFORM_WAYLAND_KHR
 #include "wayland/SDL_waylanddyn.h"
 #endif
-#if SDL_VIDEO_DRIVER_WINDOWS
+#if SDL_VIDEO_DRIVER_WINDOWS && _WIN32
 #define VK_USE_PLATFORM_WIN32_KHR
 #include "../core/windows/SDL_windows.h"
 #endif

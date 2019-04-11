@@ -593,7 +593,7 @@ _image EngineBase::createLumMask()
 	{
 		for (int j = 0; j < LUM_MASK_WIDTH; j++)
 		{
-			double distance = std::abs(hypot(double(i - LUM_MASK_HEIGHT / 2) / (LUM_MASK_HEIGHT / 2), double(j - LUM_MASK_WIDTH / 2) / (LUM_MASK_WIDTH / 2)));
+			double distance = std::fabs(hypot(double(i - LUM_MASK_HEIGHT / 2) / (LUM_MASK_HEIGHT / 2), double(j - LUM_MASK_WIDTH / 2) / (LUM_MASK_WIDTH / 2)));
 			if (distance >= 0.5)
 			{
 				c[i][j] = 0;
@@ -1171,7 +1171,7 @@ void EngineBase::pushEvent(AEvent * event)
 	eventList.event.push_back(*event);
 }
 
-//ĞèÒª×Ô¼ºÊÍ·Å
+//ï¿½ï¿½Òªï¿½Ô¼ï¿½ï¿½Í·ï¿½
 int EngineBase::readEventList(EventList * eList)
 {
 	if (!eventList.event.size())
@@ -2147,7 +2147,7 @@ void EngineBase::decodeNextAudio(_video video)
 		}
 		if (v->audioStream.packet->stream_index == v->audioStream.index)
 		{
-			//Ñ­»·´¦Àí¶à´Î²ÅÄÜ½âµ½Ò»Ö¡µÄÇé¿ö
+			//Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½Ü½âµ½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½
 			int gotframe = 0;
 			int gotsize = 0;
 			int state = 0;
@@ -2527,7 +2527,7 @@ int EngineBase::convert(AVCodecContext * codecCtx, AVFrame * frame, int out_samp
 		av_get_channel_layout_nb_channels(codecCtx->channel_layout)) ?
 		codecCtx->channel_layout : av_get_default_channel_layout(codecCtx->channels);
 
-	//ÕâÀïµÄÉèÖÃºÜ´Ö²Ú£¬×îºÃÏêÏ¸´¦Àí
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃºÜ´Ö²Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
 	switch (out_channels)
 	{
 	case 1:

@@ -250,8 +250,8 @@ bool convert::isProChar(char c)
 
 std::string convert::extractFilePath(const std::string& fileName)
 {
-	char c[_MAX_PATH];
-	memset(c, 0, _MAX_PATH);
+	char c[255];
+	memset(c, 0, 255);
 	_splitpath(fileName.c_str(), NULL, c, NULL, NULL);
 	std::string path = c;
 	return path;
@@ -259,8 +259,8 @@ std::string convert::extractFilePath(const std::string& fileName)
 
 std::string convert::extractFileName(const std::string& fileName)
 {
-	char c[_MAX_FNAME];
-	memset(c, 0, _MAX_FNAME);
+	char c[255];
+	memset(c, 0, 255);
 	_splitpath(fileName.c_str(), NULL, NULL, c, NULL);
 	std::string name = c;
 	return name;
@@ -268,8 +268,8 @@ std::string convert::extractFileName(const std::string& fileName)
 
 std::string convert::extractFileExt(const std::string & fileName)
 {
-	char e[_MAX_EXT];
-	memset(e, 0, _MAX_EXT);
+	char e[255];
+	memset(e, 0, 255);
 	_splitpath(fileName.c_str(), NULL, NULL, NULL, e);
 	std::string ext = e;
 	return ext;
@@ -277,10 +277,10 @@ std::string convert::extractFileExt(const std::string & fileName)
 
 std::string convert::extractFullName(const std::string & fileName)
 {
-	char c[_MAX_FNAME];
-	memset(c, 0, _MAX_FNAME);
-	char e[_MAX_EXT];
-	memset(e, 0, _MAX_EXT);
+	char c[255];
+	memset(c, 0, 255);
+	char e[255];
+	memset(e, 0, 255);
 	_splitpath(fileName.c_str(), NULL, NULL, c, e);
 	std::string name = c;
 	std::string ext = e;
@@ -289,12 +289,12 @@ std::string convert::extractFullName(const std::string & fileName)
 
 std::vector<std::string> convert::extractFileAll(const std::string & fileName)
 {
-	char c[_MAX_FNAME];
-	memset(c, 0, _MAX_FNAME);
-	char e[_MAX_EXT];
-	memset(e, 0, _MAX_EXT);
-	char p[_MAX_PATH];
-	memset(p, 0, _MAX_PATH);
+	char c[255];
+	memset(c, 0, 255);
+	char e[255];
+	memset(e, 0, 255);
+	char p[255];
+	memset(p, 0, 255);
 	_splitpath(fileName.c_str(), NULL, p, c, e);
 	std::vector<std::string> s = {};
 	s.resize(3);

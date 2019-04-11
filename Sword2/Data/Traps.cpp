@@ -1,5 +1,5 @@
 #include "Traps.h"
-
+#include "../Config/Config.h"
 
 
 Traps::Traps()
@@ -17,7 +17,7 @@ void Traps::load()
 	freeResource();
 	std::string fileName = TRAPS_INI;
 	fileName = DEFAULT_FOLDER + fileName;
-	ini = new INIReader(fileName);
+	ini = new INIReader(Config::getInstance()->getAssetDir() + fileName);
 }
 
 void Traps::save()
@@ -28,7 +28,7 @@ void Traps::save()
 	}
 	std::string fileName = TRAPS_INI;
 	fileName = DEFAULT_FOLDER + fileName;
-	ini->saveToFile(fileName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + fileName);
 }
 
 void Traps::freeResource()
@@ -56,7 +56,7 @@ void Traps::set(const std::string & mapName, int index, const std::string & valu
 	{
 		std::string fileName = TRAPS_INI;
 		fileName = DEFAULT_FOLDER + fileName;
-		ini = new INIReader(fileName);
+		ini = new INIReader(Config::getInstance()->getAssetDir() + fileName);
 	}
 	std::string name = convert::formatString("%d", index);
 	ini->Set(mapName, name, value);

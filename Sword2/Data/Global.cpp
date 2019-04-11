@@ -1,5 +1,5 @@
 #include "Global.h"
-
+#include "../Config/Config.h"
 
 //Global Global::global;
 //Global * Global::this_ = &Global::global;
@@ -16,7 +16,7 @@ Global::~Global()
 void Global::load()
 {
 	std::string fileName = GLOBAL_INI;
-	fileName = DEFAULT_FOLDER + fileName;
+	fileName = Config::getInstance()->getAssetDir() + DEFAULT_FOLDER + fileName;
 	INIReader ini = INIReader::INIReader(fileName);
 
 	data.mapName = ini.Get("State", "Map", "");
@@ -52,7 +52,7 @@ void Global::save()
 	ini.SetBoolean("Option", "NPCAI", data.NPCAI);
 	ini.SetBoolean("Option", "CanInput", data.canInput);
 
-	ini.saveToFile(fileName);
+	ini.saveToFile(Config::getInstance()->getAssetDir() + fileName);
 }
 /*
 Global * Global::getInstance()

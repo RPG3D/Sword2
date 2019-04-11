@@ -34,7 +34,7 @@ private:
 	static Config config;
 	static Config * this_;
 
-	std::string AssetDir = "D:\\Sword2Data";
+	std::string AssetDir = "D:/Sword2Data/";
 
 	int windowWidth = DEFAULT_WINDOW_WIDTH;
 	int windowHeight = DEFAULT_WINDOW_HEIGHT;

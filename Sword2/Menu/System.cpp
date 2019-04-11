@@ -133,7 +133,7 @@ void System::saveScreen()
 		memcpy(newData + BMP16HeadLen + 4, &h, 4);
 		int nil = 0xFFFF;
 		memcpy(newData + BMP16HeadLen + 8, &nil, 4);
-		File::writeFile(imageName, newData, len + BMP16HeadLen + 12);
+		File::writeFile(Config::getInstance()->getAssetDir() + imageName, newData, len + BMP16HeadLen + 12);
 		
 	}
 	engine->freeImage(snap);

@@ -195,8 +195,8 @@ bool GameManager::loadGame(int index)
 	}
 	initAllTime();
 	engine->setTimePaused(&timer, true);
-	convert::deleteAll(DEFAULT_FOLDER);
-	convert::copyTo(convert::formatString(SAVE_FOLDER, index), DEFAULT_FOLDER);
+	convert::deleteAll(Config::getInstance()->getAssetDir() + DEFAULT_FOLDER);
+	convert::copyTo(convert::formatString(std::string(Config::getInstance()->getAssetDir() + SAVE_FOLDER).c_str(), index), Config::getInstance()->getAssetDir() + DEFAULT_FOLDER);
 	global.load();
 	std::string tempNpcName = global.data.npcName;
 	std::string tempObjName = global.data.objName;

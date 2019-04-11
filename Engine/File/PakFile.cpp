@@ -398,7 +398,7 @@ int PakFile::readFile(const std::string & fileName, char ** s)
 		fName = fName.c_str() + 1;
 	}
 
-	std::string DiskFile = AssetDir + "/" + fName;
+	std::string DiskFile = AssetDir + fName;
 	if (File::fileExist(DiskFile))
 	{
 		int len;

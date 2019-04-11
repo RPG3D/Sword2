@@ -480,7 +480,7 @@ std::vector<std::string> convert::getAllFile(const std::string & path, const std
 #ifdef _WIN32
 	std::string firstF = path + "*.*";
 	_finddata_t f;
-	int handle = _findfirst(firstF.c_str(), &f);
+	intptr_t handle = _findfirst(firstF.c_str(), &f);
 	if (handle == -1)
 	{
 		return s;

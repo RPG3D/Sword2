@@ -217,7 +217,13 @@ void Weather::setLum(unsigned char l)
 	{
 		lum = (l + 1) * 7 + 32;
 	}
-	engine->setImageAlpha(dayMask, 255 - lum);
+
+	//imxqliu add check nullptr
+	if (dayMask)
+	{
+		engine->setImageAlpha(dayMask, 255 - lum);
+	}
+
 }
 
 void Weather::setTime(unsigned char t)

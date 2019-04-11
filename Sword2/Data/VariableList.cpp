@@ -1,4 +1,5 @@
 #include "VariableList.h"
+#include "../Config/Config.h"
 
 VariableList::VariableList()
 {
@@ -15,14 +16,14 @@ void VariableList::load()
 	freeResource();
 	std::string fileName = DEFAULT_FOLDER;
 	fileName += VARIABLE_INI;
-	ini = new INIReader(fileName);
+	ini = new INIReader(Config::getInstance()->getAssetDir() + fileName);
 }
 
 void VariableList::save()
 {
 	std::string fileName = DEFAULT_FOLDER;
 	fileName += VARIABLE_INI;
-	ini->saveToFile(fileName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + fileName);
 }
 
 std::string VariableList::get(const std::string & name)

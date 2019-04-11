@@ -1,6 +1,6 @@
 #include "Memo.h"
 #include "../GameManager/GameManager.h"
-
+#include "../Config/Config.h"
 
 Memo::Memo()
 {
@@ -17,7 +17,7 @@ void Memo::load()
 	char * s = NULL;
 	int len = 0;
 	std::string fileName = MEMO_INI;
-	fileName = DEFAULT_FOLDER + fileName;
+	fileName = Config::getInstance()->getAssetDir() + DEFAULT_FOLDER + fileName;
 	if (File::readFile(fileName, &s, &len) && s != NULL && len > 0)
 	{
 		INIReader ini = INIReader::INIReader(s);
@@ -44,7 +44,7 @@ void Memo::save()
 	}
 	std::string fileName = MEMO_INI;
 	fileName = DEFAULT_FOLDER + fileName;
-	File::writeFile(fileName, (void *)m.c_str(), m.length());
+	File::writeFile(Config::getInstance()->getAssetDir() + fileName, (void *)m.c_str(), m.length());
 }
 
 void Memo::add(const std::string & str)

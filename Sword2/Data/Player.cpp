@@ -1645,6 +1645,7 @@ void Player::drawAlpha(Point cenTile, Point cenScreen, PointEx coffset)
 	Point pos = Map::getTilePosition(tile, cenTile, cenScreen, coffset);
 	int offsetX, offsetY;
 	_image image = getActionImage(&offsetX, &offsetY);
+	if (image == nullptr) return;
 	engine->setImageAlpha(image, 128);
 	engine->drawImage(image, pos.x + (int)offset.x - offsetX, pos.y + (int)offset.y - offsetY);
 	engine->setImageAlpha(image, 255);
@@ -1824,7 +1825,7 @@ void Player::save(const std::string & fileName)
 	{
 		fName += fileName;
 	}
-	ini->saveToFile(fName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + fName);
 	delete ini;
 	ini = NULL;
 }

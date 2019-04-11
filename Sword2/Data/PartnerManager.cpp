@@ -39,7 +39,7 @@ void PartnerManager::load()
 	freeResource();
 	std::string fileName = DEFAULT_FOLDER;
 	fileName += PARTNER_INI;
-	INIReader * ini = new INIReader(fileName);
+	INIReader * ini = new INIReader(Config::getInstance()->getAssetDir() + fileName);
 	std::string section = "Head";
 	int count = ini->GetInteger(section, "Count", 0);
 	if (count <= 0)
@@ -83,7 +83,7 @@ void PartnerManager::save()
 		partnerList[i]->saveToIni(ini, section);
 	}
 	partnerList.resize(0);
-	ini->saveToFile(fileName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + fileName);
 	delete ini;
 }
 

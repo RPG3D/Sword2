@@ -713,7 +713,7 @@ void NPCManager::load(const std::string & fileName)
 	freeResource();
 
 	std::string iniName = DEFAULT_FOLDER + fileName;
-	INIReader * ini = new INIReader(iniName);
+	INIReader * ini = new INIReader(Config::getInstance()->getAssetDir() + iniName);
 
 	std::string section = "Head";
 	int count = ini->GetInteger(section, "Count", 0);
@@ -770,7 +770,7 @@ void NPCManager::save(const std::string & fileName)
 		
 	}
 	std::string iniName = DEFAULT_FOLDER + fileName;
-	ini->saveToFile(iniName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + iniName);
 	delete ini;
 	ini = NULL;
 }

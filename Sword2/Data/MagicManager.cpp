@@ -30,7 +30,7 @@ void MagicManager::load()
 	freeResource();
 	std::string iniName = DEFAULT_FOLDER;
 	iniName += MAGIC_INI;
-	INIReader * ini = new INIReader(iniName);
+	INIReader * ini = new INIReader(Config::getInstance()->getAssetDir() + iniName);
 
 	for (size_t i = 0; i < MAGIC_COUNT + MAGIC_TOOLBAR_COUNT + MAGIC_PRACTISE_COUNT; i++)
 	{
@@ -70,7 +70,7 @@ void MagicManager::save()
 	ini->SetInteger(section, "Count", count);
 	std::string iniName = DEFAULT_FOLDER;
 	iniName += MAGIC_INI;
-	ini->saveToFile(iniName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + iniName);
 	delete ini;
 }
 

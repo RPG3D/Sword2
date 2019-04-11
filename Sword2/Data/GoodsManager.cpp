@@ -38,7 +38,7 @@ void GoodsManager::load(const std::string & fileName)
 	{
 		iniName += fileName;
 	}
-	INIReader * ini = new INIReader(iniName);
+	INIReader * ini = new INIReader(Config::getInstance()->getAssetDir() + iniName);
 
 	for (size_t i = 0; i < GOODS_COUNT + GOODS_TOOLBAR_COUNT + GOODS_BODY_COUNT; i++)
 	{
@@ -94,7 +94,7 @@ void GoodsManager::save(const std::string & fileName)
 	{
 		iniName += fileName;
 	}
-	ini->saveToFile(iniName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + iniName);
 	delete ini;
 }
 

@@ -1,4 +1,5 @@
 #include "SaveLoad.h"
+#include "../Config/Config.h"
 
 SaveLoad::SaveLoad(bool s, bool l)
 {
@@ -53,7 +54,7 @@ void SaveLoad::onEvent()
 
 		char * c = NULL;
 		int len = 0;
-		if (File::readFile(imageName, &c, &len))
+		if (File::readFile(Config::getInstance()->getAssetDir() + imageName, &c, &len))
 		{
 			if (len > BMP16HeadLen)
 			{
@@ -115,7 +116,7 @@ void SaveLoad::onEvent()
 		{
 			std::string tempName = convert::formatString(SAVE_FOLDER, index + 1);
 			tempName += GLOBAL_INI;
-			if (File::fileExist(tempName))
+			if (File::fileExist(Config::getInstance()->getAssetDir() + tempName))
 			{
 				result = erLoad;
 				running = false;

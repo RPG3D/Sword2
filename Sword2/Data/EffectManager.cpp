@@ -1,5 +1,5 @@
 #include "EffectManager.h"
-
+#include "../Config/Config.h"
 
 
 EffectManager::EffectManager()
@@ -113,7 +113,7 @@ void EffectManager::load()
 	freeResource();
 	std::string iniName = DEFAULT_FOLDER;
 	iniName += EFFECT_INI;
-	INIReader * ini = new INIReader(iniName);
+	INIReader * ini = new INIReader(Config::getInstance()->getAssetDir() + iniName);
 	std::string section = "Head";
 	int count = ini->GetInteger(section, "Count", 0);
 	if (count < 0)
@@ -145,7 +145,7 @@ void EffectManager::save()
 	
 	std::string iniName = DEFAULT_FOLDER;
 	iniName += EFFECT_INI;
-	ini->saveToFile(iniName);
+	ini->saveToFile(Config::getInstance()->getAssetDir() + iniName);
 	delete ini;
 }
 

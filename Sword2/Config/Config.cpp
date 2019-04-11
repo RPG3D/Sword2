@@ -80,7 +80,7 @@ void Config::save()
 	ini.SetInteger("Game", "SoundVolume", (int)(soundVolume * 100));
 	ini.SetInteger("Game", "WindowWidth", windowWidth);
 	ini.SetInteger("Game", "WindowHeight", windowHeight);
-	ini.saveToFile(fileName);
+	ini.saveToFile(Config::getInstance()->getAssetDir() + fileName);
 }
 
 float Config::getMusicVolume()

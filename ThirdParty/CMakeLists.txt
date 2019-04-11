@@ -1,6 +1,11 @@
 
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 3.6.0)
 
+#Android wchar.h
+if (${CMAKE_SYSTEM_NAME} MATCHES "Android")
+add_definitions("-DHAVE_WCHAR_H")
+message(-DHAVE_WCHAR_H)
+endif()
 
 add_subdirectory(Lua)
 

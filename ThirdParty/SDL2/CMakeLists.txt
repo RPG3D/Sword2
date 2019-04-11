@@ -56,6 +56,12 @@ set(SDL_CMAKE_DEBUG_POSTFIX "d"
 
 mark_as_advanced(CMAKE_IMPORT_LIBRARY_SUFFIX SDL_CMAKE_DEBUG_POSTFIX)
 
+#Android wchar.h
+if (${CMAKE_SYSTEM_NAME} MATCHES "Android")
+add_definitions("-DHAVE_WCHAR_H")
+message(-DHAVE_WCHAR_H)
+endif()
+
 # Calculate a libtool-like version number
 math(EXPR LT_CURRENT "${SDL_MICRO_VERSION} - ${SDL_INTERFACE_AGE}")
 math(EXPR LT_AGE "${SDL_BINARY_AGE} - ${SDL_INTERFACE_AGE}")
@@ -735,7 +741,7 @@ else()
   endif()
 endif()
 
-
+message(Androidddddddddddddddddddddddddddd)  
 # Enable/disable various subsystems of the SDL library
 foreach(_SUB ${SDL_SUBSYSTEMS})
   string(TOUPPER ${_SUB} _OPT)
@@ -803,7 +809,8 @@ if(SDL_VIDEO)
 endif()
 
 if(ANDROID)
-  file(GLOB ANDROID_CORE_SOURCES ${SDL2_SOURCE_DIR}/src/core/android/*.c)
+message(Androidddddddddddddddddddddddddddd)  
+file(GLOB ANDROID_CORE_SOURCES ${SDL2_SOURCE_DIR}/src/core/android/*.c)
   set(SOURCE_FILES ${SOURCE_FILES} ${ANDROID_CORE_SOURCES})
 
   # SDL_spinlock.c Needs to be compiled in ARM mode.

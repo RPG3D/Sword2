@@ -179,7 +179,7 @@ void Button::initFromIni(const std::string & fileName)
 		printf("no ini file: %s\n", fileName.c_str());
 		return;
 	}
-	INIReader ini = INIReader::INIReader(s);
+	INIReader ini(s);
 	delete[] s;
 	kind = ini.Get("Init", "Kind", kind);
 	rect.x = ini.GetInteger("Init", "Left", rect.x);

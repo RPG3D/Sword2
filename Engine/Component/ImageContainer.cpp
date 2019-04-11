@@ -35,7 +35,7 @@ void ImageContainer::initFromIni(const std::string & fileName)
 		printf("no ini file: %s\n", fileName.c_str());
 		return;
 	}
-	INIReader ini = INIReader::INIReader(s);
+	INIReader ini(s);
 	delete[] s;
 	rect.x = ini.GetInteger("Init", "Left", rect.x);
 	rect.y = ini.GetInteger("Init", "Top", rect.y);

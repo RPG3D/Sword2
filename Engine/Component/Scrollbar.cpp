@@ -62,7 +62,7 @@ void Scrollbar::initFromIni(const std::string & fileName)
 		printf("no ini file: %s\n", fileName.c_str());
 		return;
 	}
-	INIReader ini = INIReader::INIReader(s);
+	INIReader ini(s);
 	delete[] s;
 
 	style = (ScrollbarStyle)ini.GetInteger("Init", "Style", int(style));

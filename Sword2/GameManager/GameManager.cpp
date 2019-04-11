@@ -275,8 +275,8 @@ void GameManager::saveGame(int index)
 	effectManager.save();
 	if (index > 0)
 	{
-		convert::deleteAll(convert::formatString(SAVE_FOLDER, index));
-		convert::copyTo(DEFAULT_FOLDER, convert::formatString(SAVE_FOLDER, index));
+		convert::deleteAll(convert::formatString(std::string(Config::getInstance()->getAssetDir() + SAVE_FOLDER).c_str(), index));
+		convert::copyTo(Config::getInstance()->getAssetDir() + DEFAULT_FOLDER, convert::formatString(std::string(Config::getInstance()->getAssetDir() + SAVE_FOLDER).c_str(), index));
 	}
 }
 

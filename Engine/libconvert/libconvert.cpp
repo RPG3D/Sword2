@@ -13,6 +13,10 @@
 #include "io.h"
 #else
 #include "dirent.h"
+#include <libgen.h>
+//#include <iconv.h>
+//#include <cwchar>
+//#define _USE_LIBICONV 1
 #ifdef _findfirst
 #undef _findfirst
 #endif // _findfirst
@@ -250,33 +254,46 @@ bool convert::isProChar(char c)
 
 std::string convert::extractFilePath(const std::string& fileName)
 {
+#if _WIN32
 	char c[255];
 	memset(c, 0, 255);
 	_splitpath(fileName.c_str(), NULL, c, NULL, NULL);
 	std::string path = c;
+#else
+    std::string path = dirname(fileName.c_str());
+#endif
 	return path;
 }
 
 std::string convert::extractFileName(const std::string& fileName)
 {
+#if _WIN32
 	char c[255];
 	memset(c, 0, 255);
 	_splitpath(fileName.c_str(), NULL, NULL, c, NULL);
 	std::string name = c;
+#else
+    std::string name = basename(fileName.c_str());
+#endif
 	return name;
 }
 
 std::string convert::extractFileExt(const std::string & fileName)
 {
+#if _WIN32
 	char e[255];
 	memset(e, 0, 255);
 	_splitpath(fileName.c_str(), NULL, NULL, NULL, e);
 	std::string ext = e;
+#else
+    std::string ext = strrchr(fileName.c_str(), '.');
+#endif
 	return ext;
 }
 
 std::string convert::extractFullName(const std::string & fileName)
 {
+#if _WIN32
 	char c[255];
 	memset(c, 0, 255);
 	char e[255];
@@ -284,11 +301,16 @@ std::string convert::extractFullName(const std::string & fileName)
 	_splitpath(fileName.c_str(), NULL, NULL, c, e);
 	std::string name = c;
 	std::string ext = e;
+#else
+    std::string name = basename(fileName.c_str());
+    std::string ext = strrchr(fileName.c_str(), '.');
+#endif
 	return name + ext;
 }
 
 std::vector<std::string> convert::extractFileAll(const std::string & fileName)
 {
+#if _WIN32
 	char c[255];
 	memset(c, 0, 255);
 	char e[255];
@@ -296,6 +318,11 @@ std::vector<std::string> convert::extractFileAll(const std::string & fileName)
 	char p[255];
 	memset(p, 0, 255);
 	_splitpath(fileName.c_str(), NULL, p, c, e);
+#else
+    std::string p = dirname(fileName.c_str());
+    std::string c = basename(fileName.c_str());
+    std::string e = strrchr(fileName.c_str(), '.');
+#endif
 	std::vector<std::string> s = {};
 	s.resize(3);
 	s[0] = p;
@@ -498,13 +525,13 @@ std::vector<std::string> convert::getAllFile(const std::string & path, const std
 #else
 	DIR *dp;
 	struct dirent *entry;
-	if ((dp = opendir(path)) == NULL)
+	if ((dp = opendir(path.c_str())) == NULL)
 	{
 		return s;
 	}
 	while ((entry = readdir(dp)) != NULL)
 	{
-		if ((strcmp(".", entry->d_name) == 0 || strcmp("..", entry->d_name) == 0) && (lowerCase(extractFileExt(f.name)) == fext || fext == ".*"))
+		if ((strcmp(".", entry->d_name) == 0 || strcmp("..", entry->d_name) == 0) && (lowerCase(extractFileExt(entry->d_name)) == fext || fext == ".*"))
 		{
 			continue;
 		}

@@ -1,5 +1,6 @@
 #include "EngineBase.h"
 #include "File/PakFile.h"
+#include <math.h>
 
 EngineBase* EngineBase::this_ = NULL;
 
@@ -600,7 +601,7 @@ _image EngineBase::createLumMask()
 			}
 			else
 			{
-				unsigned char a = unsigned char((0.5 - distance) * LUM_MASK_MAX_ALPHA);
+				unsigned char a = ((unsigned char)(0.5 - distance)) * LUM_MASK_MAX_ALPHA;
 				c[i][j] = (a << 24) | (0xFFFFFF);
 			}
 		}

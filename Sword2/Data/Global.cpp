@@ -17,7 +17,7 @@ void Global::load()
 {
 	std::string fileName = GLOBAL_INI;
 	fileName = DEFAULT_FOLDER + fileName;
-	INIReader ini = INIReader::INIReader(Config::getInstance()->getAssetDir() + fileName);
+	INIReader ini(Config::getInstance()->getAssetDir() + fileName);
 
 	data.mapName = ini.Get("State", "Map", "");
 	data.npcName = ini.Get("State", "Npc", "");
@@ -37,7 +37,7 @@ void Global::save()
 {
 	std::string fileName = GLOBAL_INI;
 	fileName = DEFAULT_FOLDER + fileName;
-	INIReader ini = INIReader::INIReader(Config::getInstance()->getAssetDir() + fileName);
+	INIReader ini(Config::getInstance()->getAssetDir() + fileName);
 
 	ini.Set("State", "Map", data.mapName);
 	ini.Set("State", "Npc", data.npcName);

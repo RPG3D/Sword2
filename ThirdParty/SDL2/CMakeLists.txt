@@ -741,7 +741,6 @@ else()
   endif()
 endif()
 
-message(Androidddddddddddddddddddddddddddd)  
 # Enable/disable various subsystems of the SDL library
 foreach(_SUB ${SDL_SUBSYSTEMS})
   string(TOUPPER ${_SUB} _OPT)

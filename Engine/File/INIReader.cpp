@@ -148,7 +148,10 @@ void INIReader::SetBoolean(const std::string & section, const std::string & name
 
 unsigned int INIReader::GetColor(const std::string & section, const std::string & name, unsigned int value)
 {
-	unsigned char colorData[3] = { (unsigned char(value & 0xFF0000) >> 16) ,(unsigned char(value & 0xFF00) >> 8) , (unsigned char(value & 0xFF)) };
+	unsigned char colorData[3];// = { (value & 0xFF0000) >> 16 ,(value & 0xFF00) >> 8 , (value & 0xFF) };
+    colorData[0] = (value & 0xFF0000) >> 16;
+    colorData[1] = (value & 0xFF00) >> 8;
+    colorData[2] = (value & 0xFF);
 
 	std::string col = convert::formatString("%d", colorData[0]) + "," + convert::formatString("%d", colorData[1]) + "," + convert::formatString("%d", colorData[2]);
 	col = Get(section, name, col);

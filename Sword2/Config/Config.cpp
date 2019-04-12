@@ -21,7 +21,7 @@ Config * Config::getInstance()
 void Config::load()
 {
 	std::string fileName = CONFIG_INI;
-	INIReader ini = INIReader::INIReader(fileName);
+	INIReader ini(fileName);
 	fullScreen = ini.GetBoolean("Game", "FullScreen", fullScreen);
 	playerAlpha = ini.GetBoolean("Game", "PlayerAlpha", playerAlpha);
 	canChangeDisplayMode = ini.GetBoolean("Game", "CanChangeDisplayMode", canChangeDisplayMode);
@@ -54,7 +54,7 @@ void Config::load()
 void Config::save()
 {
 	std::string fileName = CONFIG_INI;
-	INIReader ini = INIReader::INIReader(fileName);
+	INIReader ini(fileName);
 	ini.SetBoolean("Game", "FullScreen", fullScreen);
 	ini.SetBoolean("Game", "CanChangeDisplayMode", canChangeDisplayMode);
 	ini.SetBoolean("Game", "PlayerAlpha", playerAlpha);

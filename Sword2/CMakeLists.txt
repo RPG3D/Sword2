@@ -63,13 +63,4 @@ link_libraries(Imm32)
 #game engine lib
 link_libraries(Engine)
 
-
-
-#Android use iconv
-if(${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    #include_directories(D:/AndroidSDK/ndk-bundle/sources/android/support/include)
-    link_libraries(D:/AndroidSDK/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/${ANDROID_ABI}/libandroid_support.a)
-endif()
-
-
 add_executable(Sword2 ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS} )

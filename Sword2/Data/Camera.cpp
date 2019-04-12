@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "Map.h"
 #include "../GameManager/GameManager.h"
+#include <cmath>
 
 Camera::Camera()
 {
@@ -32,7 +33,7 @@ void Camera::setFlyTo(Point d)
 	pos.x -= (int)offset.x;
 	pos.y -= (int)offset.y;
 	double l = hypot(pos.x, pos.y);
-	endFlyTime = (unsigned int)std::abs(l / TILE_WIDTH / (((double)cameraSpeed) * SPEED_TIME));
+	endFlyTime = (unsigned int)std::fabs(l / TILE_WIDTH / (((double)cameraSpeed) * SPEED_TIME));
 	flyingDirection = { pos.x, pos.y };
 	flying = true;
 }

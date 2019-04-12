@@ -1,6 +1,6 @@
 #include "EngineBase.h"
 #include "File/PakFile.h"
-#include <math.h>
+#include <cmath>
 
 EngineBase* EngineBase::this_ = NULL;
 

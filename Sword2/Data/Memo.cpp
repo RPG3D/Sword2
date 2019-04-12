@@ -20,7 +20,7 @@ void Memo::load()
 	fileName = Config::getInstance()->getAssetDir() + DEFAULT_FOLDER + fileName;
 	if (File::readFile(fileName, &s, &len) && s != NULL && len > 0)
 	{
-		INIReader ini = INIReader::INIReader(s);
+		INIReader ini(s);
 		int count = ini.GetInteger("Memo", "Count", 0);
 		memo.resize(count);
 		for (size_t i = 0; i < memo.size(); i++)

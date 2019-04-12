@@ -617,12 +617,20 @@ _image EngineBase::createLumMask()
 
 void EngineBase::setImageAlpha(_image image, unsigned char a)
 {
+	if (image == nullptr)
+	{
+		return;
+	}
 	SDL_SetTextureBlendMode((SDL_Texture *)image, SDL_BLENDMODE_BLEND);
 	SDL_SetTextureAlphaMod((SDL_Texture *)image, a);	
 }
 
 void EngineBase::setImageColorMode(_image image, unsigned char r, unsigned char g, unsigned char b)
 {
+	if (image == nullptr)
+	{
+		return;
+	}
 	SDL_SetTextureColorMod((SDL_Texture *)image, r, g, b);
 }
 
@@ -670,6 +678,10 @@ _image EngineBase::beginDrawTalk(int w, int h)
 _image EngineBase::endDrawTalk()
 {
 	SDL_Texture * t = SDL_GetRenderTarget(renderer);
+	if (t == nullptr)
+	{
+		return nullptr;
+	}
 	SDL_SetRenderTarget(renderer, (SDL_Texture *)originalTex);
 	SDL_Texture * newT = (SDL_Texture *)createNewImageFromImage((_image)t);
 	SDL_DestroyTexture(t);
@@ -722,6 +734,10 @@ _image EngineBase::beginSaveScreen()
 _image EngineBase::endSaveScreen()
 {
 	SDL_Texture * t = SDL_GetRenderTarget(renderer);
+	if (t == nullptr)
+	{
+		return nullptr;
+	}
 	SDL_SetRenderTarget(renderer, (SDL_Texture *)originalTex);
 	return (_image)t;
 }

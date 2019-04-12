@@ -12,8 +12,11 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
+                arguments "-DANDROID_STL=c++_static"
                 abiFilters "armeabi-v7a"
+
             }
+
         }
     }
     buildTypes {
@@ -27,6 +30,7 @@ android {
             path "../../CMakeLists.txt"
         }
     }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {

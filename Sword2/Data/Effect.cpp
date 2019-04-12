@@ -204,8 +204,8 @@ std::deque<Point> Effect::getPassPath(Point from, PointEx fromOffset, Point to, 
 	std::deque<Point> tempPath[3], result = {};
 	tempPath[0] = gm->map.getPassPathEx(from, fromOffset, to, toOffset, flyingDirection);
 	double l = hypot(flyingDirection.x, flyingDirection.y);
-	int tempX = max((int)(((double)flyingDirection.x) / l * width * TILE_HEIGHT / 2) - 1, 1);
-	int tempY = max((int)(((double)flyingDirection.y) / l * width * TILE_WIDTH / 2) - 1, 1);
+	int tempX = std::max((int)(((double)flyingDirection.x) / l * width * TILE_HEIGHT / 2) - 1, 1);
+	int tempY = std::max((int)(((double)flyingDirection.y) / l * width * TILE_WIDTH / 2) - 1, 1);
 	Point tempFrom, tempTo;
 	PointEx tempFromOffset, tempToOffset;
 	getNewPosition(from, { fromOffset.x + tempY , fromOffset.y - tempX }, &tempFrom, &tempFromOffset);
@@ -214,7 +214,7 @@ std::deque<Point> Effect::getPassPath(Point from, PointEx fromOffset, Point to, 
 	getNewPosition(from, { fromOffset.x - tempY , fromOffset.y + tempX }, &tempFrom, &tempFromOffset);
 	getNewPosition(to, { toOffset.x - tempY , toOffset.y + tempX }, &tempTo, &tempToOffset);
 	tempPath[2] = gm->map.getPassPathEx(tempFrom, tempFromOffset, tempTo, tempToOffset, flyingDirection);
-	auto maxStep = max(max(tempPath[0].size(), tempPath[1].size()), tempPath[2].size());
+	auto maxStep = std::max(std::max(tempPath[0].size(), tempPath[1].size()), tempPath[2].size());
 	for (size_t i = 0; i < maxStep; i++)
 	{
 		for (size_t j = 0; j < 3; j++)

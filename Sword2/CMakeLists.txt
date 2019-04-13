@@ -71,17 +71,6 @@ link_libraries(Lua)
 link_libraries(SDL2_image)
 link_libraries(SDL2_ttf)
 
-#ffmpeg lib
-# link_libraries(avcodec)
-# link_libraries(avdevice)
-# link_libraries(avfilter)
-# link_libraries(avformat)
-# link_libraries(avutil)
-# link_libraries(swresample)
-# link_libraries(swscale)
-
-
-
 
 #game engine lib
 link_libraries(Engine)

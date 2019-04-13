@@ -52,14 +52,14 @@ void TitleTeam::onDraw()
 		color = 0xFFFFFF + (alpha << 24);
 	}
 	
-	engine->drawUnicodeText(L"½£ÏÀÇéÔµ·¡", w - 370, 50, 55, color);
-	engine->drawUnicodeText(L"ÒıÇæÖØÖÆ£º", w - 410, 110, 30, color);
+	engine->drawUnicodeText(L"å‰‘ä¾ æƒ…ç¼˜è´°", w - 370, 50, 55, color);
+	engine->drawUnicodeText(L"å¼•æ“é‡åˆ¶ï¼š", w - 410, 110, 30, color);
 	engine->drawUnicodeText(L"Upwinded", w - 300, 150, 26, color);
-	engine->drawUnicodeText(L"ÌØ±ğ¸ĞĞ»£º", w - 410, 200, 30, color);
-	engine->drawUnicodeText(L"Å¼Ïñ(Weyl¡¢BT¡¢scarsty¡¢SB500)", w - 410, 250, 26, color);
-	engine->drawUnicodeText(L"Ğ¡ÊÔµ¶½£", w - 290, 300, 26, color);
-	engine->drawUnicodeText(L"´óÎäÏÀÂÛÌ³(dawuxia.net)", w - 385, 350, 26, color);
-	engine->drawUnicodeText(L"½£ÏÀÇéÔµÌù°É", w - 320, 400, 26, color);
+	engine->drawUnicodeText(L"ç‰¹åˆ«æ„Ÿè°¢ï¼š", w - 410, 200, 30, color);
+	engine->drawUnicodeText(L"å¶åƒ(Weylã€BTã€scarstyã€SB500)", w - 410, 250, 26, color);
+	engine->drawUnicodeText(L"å°è¯•åˆ€å‰‘", w - 290, 300, 26, color);
+	engine->drawUnicodeText(L"å¤§æ­¦ä¾ è®ºå›(dawuxia.net)", w - 385, 350, 26, color);
+	engine->drawUnicodeText(L"å‰‘ä¾ æƒ…ç¼˜è´´å§", w - 320, 400, 26, color);
 }
 
 void TitleTeam::onExit()

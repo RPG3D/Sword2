@@ -28,7 +28,7 @@ void ToolTip::setGoods(Goods * goods)
 	}
 	image->impImage = IMP::createIMPImage(imageName);
 	name->setStr(convert::GBKToUnicode(goods->name));
-	std::wstring costStr = L"¼Û¸ñ£º";
+	std::wstring costStr = L"ä»·æ ¼ï¼š";
 	costStr += convert::GBKToUnicode(convert::formatString("%d", goods->cost));
 	cost->setStr(costStr);
 	intro1->setStr(convert::GBKToUnicode(goods->effect));
@@ -51,7 +51,7 @@ void ToolTip::setMagic(Magic * magic, int level)
 	}
 	image->impImage = IMP::createIMPImage(imageName);
 	name->setStr(convert::GBKToUnicode(magic->name));
-	std::wstring costStr = L"µÈ¼¶£º";
+	std::wstring costStr = L"ç­‰çº§ï¼š";
 	costStr += convert::GBKToUnicode(convert::formatString("%d", level));
 	cost->setStr(costStr);
 	intro1->setStr(L"");

@@ -46,7 +46,7 @@ void GameManager::initMenuWithThread()
 		engine->frameBegin();
 		int w, h;
 		engine->getWindowSize(&w, &h);
-		std::wstring ws = L"ÔØÈëÖÐ";
+		std::wstring ws = L"è½½å…¥ä¸­";
 		unsigned int t = (engine->getTime() - beginTime) % 1200 / 300;
 		if (t == 1)
 		{
@@ -120,7 +120,7 @@ void GameManager::loadGameWithThread(int index)
 		engine->frameBegin();
 		int w, h;
 		engine->getWindowSize(&w, &h);
-		std::wstring ws = L"ÔØÈëÖÐ";
+		std::wstring ws = L"è½½å…¥ä¸­";
 		unsigned int t = (engine->getTime() - beginTime) % 1200 / 300;
 		if (t == 1)
 		{
@@ -463,7 +463,7 @@ void GameManager::loadMapWithThread(const std::string & fileName)
 		engine->frameBegin();
 		int w, h;
 		engine->getWindowSize(&w, &h);
-		std::wstring ws = L"ÔØÈëµØÍ¼ÖÐ";
+		std::wstring ws = L"è½½å…¥åœ°å›¾ä¸­";
 		unsigned int t = (engine->getTime() - beginTime) % 1200 / 300;
 		if (t == 1)
 		{
@@ -772,7 +772,7 @@ void GameManager::loadNPCWithThread(const std::string & fileName)
 		engine->frameBegin();
 		int w, h;
 		engine->getWindowSize(&w, &h);
-		std::wstring ws = L"ÔØÈë×ÊÔ´ÖÐ";
+		std::wstring ws = L"è½½å…¥èµ„æºä¸­";
 		unsigned int t = (engine->getTime() - beginTime) % 1200 / 300;
 		if (t == 1)
 		{
@@ -1370,11 +1370,11 @@ void GameManager::addMoney(int value)
 	player.addMoney(value);
 	if (value > 0)
 	{
-		showMessage(convert::formatString("»ñµÃ%dÁ½Òø×Ó£¡", value));
+		showMessage(convert::formatString("èŽ·å¾—%dä¸¤é“¶å­ï¼", value));
 	}
 	else
 	{
-		showMessage(convert::formatString("Ê§È¥%dÁ½Òø×Ó£¡", -value));
+		showMessage(convert::formatString("å¤±åŽ»%dä¸¤é“¶å­ï¼", -value));
 	}
 }
 
@@ -1515,7 +1515,7 @@ void GameManager::loadObjectWithThread(const std::string & fileName)
 		engine->frameBegin();
 		int w, h;
 		engine->getWindowSize(&w, &h);
-		std::wstring ws = L"ÔØÈë×ÊÔ´ÖÐ";
+		std::wstring ws = L"è½½å…¥èµ„æºä¸­";
 		unsigned int t = (engine->getTime() - beginTime) % 1200 / 300;
 		if (t == 1)
 		{

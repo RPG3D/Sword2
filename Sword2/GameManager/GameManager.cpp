@@ -1,4 +1,4 @@
-#include "GameManager.h"
+﻿#include "GameManager.h"
 #include <thread>
 
 GameManager * GameManager::this_ = NULL;

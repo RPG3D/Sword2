@@ -29,21 +29,21 @@ void VideoPlayer::reopenVideo(const std::string& fileName, int vloop)
 {
 	if (v != NULL)
 	{
-		engine->freeVideo(v);
+		//engine->freeVideo(v);
 		v = NULL;
 	}
 	videoFileName = fileName;	
-	v = engine->createNewVideo(fileName);
+	//v = engine->createNewVideo(fileName);
 	loop = vloop;
-	engine->setVideoLoop(v, vloop);
-	engine->runVideo(v);
+	//engine->setVideoLoop(v, vloop);
+	//engine->runVideo(v);
 }
 
 void VideoPlayer::freeResource()
 {
 	if (v != NULL)
 	{
-		engine->freeVideo(v);
+		//engine->freeVideo(v);
 		v = NULL;
 	}
 }
@@ -54,7 +54,7 @@ bool VideoPlayer::onHandleEvent(AEvent * e)
 	{
 		if (e->eventData == KEY_ESCAPE)
 		{
-			engine->stopVideo(v);
+			//engine->stopVideo(v);
 			running = false;
 		}
 	}
@@ -65,11 +65,11 @@ bool VideoPlayer::onInitial()
 {
 	if (v != NULL)
 	{
-		engine->freeVideo(v);
+		//engine->freeVideo(v);
 		v = NULL;
 	}
-	v = engine->createNewVideo(videoFileName);
-	engine->setVideoLoop(v, loop);
+	//v = engine->createNewVideo(videoFileName);
+	//engine->setVideoLoop(v, loop);
 	return true;
 }
 
@@ -79,13 +79,13 @@ void VideoPlayer::onExit()
 
 void VideoPlayer::onRun()
 {
-	engine->runVideo(v);
+	//engine->runVideo(v);
 }
 
 void VideoPlayer::onUpdate()
 {
-	engine->updateVideo(v);
-	if (engine->getVideoStopped(v))
+	//engine->updateVideo(v);
+	/*if (engine->getVideoStopped(v))
 	{
 		result |= erVideoStopped;
 		if (canCallBack)
@@ -100,12 +100,12 @@ void VideoPlayer::onUpdate()
 		{
 			running = false;
 		}
-	}
+	}*/
 }
 
 void VideoPlayer::onDraw()
 {
-	if (dragging && dragItem == this)
+	/*if (dragging && dragItem == this)
 	{
 		return;
 	}
@@ -134,7 +134,7 @@ void VideoPlayer::onDraw()
 			engine->setVideoRect(v, &rect);
 			engine->drawVideoFrame(v);
 		}	
-	}
+	}*/
 }
 
 void VideoPlayer::onDrawDrag()
@@ -154,8 +154,8 @@ void VideoPlayer::onDrawDrag()
 	}
 	else
 	{
-		engine->setVideoRect(v, &r);
-		engine->drawVideoFrame(v);
+		//engine->setVideoRect(v, &r);
+		//engine->drawVideoFrame(v);
 	}
 }
 

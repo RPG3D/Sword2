@@ -233,36 +233,36 @@ public:
 	
 public:
 	//根据文件名新建视频数据
-	_video createNewVideo(const std::string& fileName);
-	//设置视频显示区域，rect = NULL 时为全屏模式
-	void setVideoRect(_video v, Rect * rect);
-	//释放视频数据
-	void freeVideo(_video v);
+	//_video createNewVideo(const std::string& fileName);
+	////设置视频显示区域，rect = NULL 时为全屏模式
+	//void setVideoRect(_video v, Rect * rect);
+	////释放视频数据
+	//void freeVideo(_video v);
 
-	//更新视频状态，解码视频音频等，应在每次循环中调用
-	bool updateVideo(_video v);
-	//绘制视频图像
-	void drawVideoFrame(_video v);
+	////更新视频状态，解码视频音频等，应在每次循环中调用
+	//bool updateVideo(_video v);
+	////绘制视频图像
+	//void drawVideoFrame(_video v);
 
-	//此函数相当于依次调用：updateVideo(v);和drawVideoFrame(v);
-	bool onVideoFrame(_video v); 
+	////此函数相当于依次调用：updateVideo(v);和drawVideoFrame(v);
+	//bool onVideoFrame(_video v); 
 
-	//将视频设置为运行状态
-	void runVideo(_video v);
-	//暂停视频
-	void pauseVideo(_video v);
-	//恢复视频
-	void resumeVideo(_video v);
-	//停止视频
-	void stopVideo(_video v);
-	//从头播放视频
-	void resetVideo(_video v);
-	//设置视频循环播放，loop为循环次数，0为不循环，负数表示一直循环
-	void setVideoLoop(_video v, int loop);
-	//视频是否停止播放
-	bool getVideoStopped(_video v);
+	////将视频设置为运行状态
+	//void runVideo(_video v);
+	////暂停视频
+	//void pauseVideo(_video v);
+	////恢复视频
+	//void resumeVideo(_video v);
+	////停止视频
+	//void stopVideo(_video v);
+	////从头播放视频
+	//void resetVideo(_video v);
+	////设置视频循环播放，loop为循环次数，0为不循环，负数表示一直循环
+	//void setVideoLoop(_video v, int loop);
+	////视频是否停止播放
+	//bool getVideoStopped(_video v);
 
-	double getVideoTime(_video v);
+	//double getVideoTime(_video v);
 public:
 	//引擎每一帧都必须执行的处理函数
 	//每帧开始前调用

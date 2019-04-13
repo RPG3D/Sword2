@@ -745,7 +745,7 @@ void GameManager::playMovie(const std::string & fileName)
 
 void GameManager::stopMovie()
 {
-	engine->stopVideo(video->v);
+	//engine->stopVideo(video->v);
 }
 
 void GameManager::loadNPC(const std::string & fileName)

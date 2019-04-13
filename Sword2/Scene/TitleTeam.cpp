@@ -85,7 +85,7 @@ bool TitleTeam::onHandleEvent(AEvent * e)
 
 void TitleTeam::onUpdate()
 {
-	if (engine->getVideoStopped(vp->v))
+	//if (engine->getVideoStopped(vp->v))
 	{
 		running = false;
 	}

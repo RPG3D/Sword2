@@ -808,8 +808,8 @@ if(SDL_VIDEO)
 endif()
 
 if(ANDROID)
-message(Androidddddddddddddddddddddddddddd)  
-file(GLOB ANDROID_CORE_SOURCES ${SDL2_SOURCE_DIR}/src/core/android/*.c)
+
+  file(GLOB ANDROID_CORE_SOURCES ${SDL2_SOURCE_DIR}/src/core/android/*.c)
   set(SOURCE_FILES ${SOURCE_FILES} ${ANDROID_CORE_SOURCES})
 
   # SDL_spinlock.c Needs to be compiled in ARM mode.
@@ -1627,8 +1627,8 @@ endif()
 #   endif()
 # endif()
 
-configure_file("${SDL2_SOURCE_DIR}/include/SDL_config.h.cmake"
-  "${SDL2_BINARY_DIR}/include/SDL_config.h")
+#configure_file("${SDL2_SOURCE_DIR}/include/SDL_config.h.cmake" "${SDL2_BINARY_DIR}/include/SDL_config.h")
+configure_file("${SDL2_SOURCE_DIR}/include/SDL_config.h.cmake" "${SDL2_SOURCE_DIR}/include/SDL_config.h")
 
 # Prepare the flags and remove duplicates
 if(EXTRA_LDFLAGS)
@@ -1775,7 +1775,8 @@ if(SDL_SHARED)
   endif()
 endif()
 
-if(SDL_STATIC)
+#always static lib
+if(SDL_SHARED)
   set (BUILD_SHARED_LIBS FALSE)
   add_library(SDL2-static STATIC ${SOURCE_FILES})
   if (NOT SDL_SHARED OR NOT WIN32)

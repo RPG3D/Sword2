@@ -18,13 +18,13 @@ extern "C"
 #include "sdl_image.h"
 #include "sdl_ttf.h"
 
-#include "libavcodec/avcodec.h"
-#include "libavutil/avutil.h"
-#include "libavformat/avformat.h"
-#include "libswresample/swresample.h"
-#include "libavutil/opt.h"
-#include "libavutil/imgutils.h"
-#include "libswscale/swscale.h"
+//#include "libavcodec/avcodec.h"
+//#include "libavutil/avutil.h"
+//#include "libavformat/avformat.h"
+//#include "libswresample/swresample.h"
+//#include "libavutil/opt.h"
+//#include "libavutil/imgutils.h"
+//#include "libswscale/swscale.h"
 }
 
 #include <string>
@@ -72,67 +72,67 @@ struct MediaContent
 	void* data;
 };
 
-struct MediaStream
-{
-	bool exists = false;
+//struct MediaStream
+//{
+//	bool exists = false;
+//
+//	AVFormatContext * formatCtx = NULL;
+//	AVPacket * packet = NULL;
+//
+//	AVFrame * frame = NULL;
+//	AVStream * stream = NULL;
+//	AVCodecContext * codecCtx = NULL;
+//	AVCodec * codec = NULL;
+//
+//	bool setTS = false;
+//
+//	double totalTime = 0;
+//	double timePerFrame = 0;
+//	double timeBasePacket = 0;
+//	double startTime = 0;
+//	bool decodeEnd = false;
+//	int index = -1;
+//	bool stopped = false;
+//};
 
-	AVFormatContext * formatCtx = NULL;
-	AVPacket * packet = NULL;
+//struct VideoStruct
+//{
+//	std::string fileName;
+//
+//	char * buffer = NULL;
+//
+//	/*MediaStream videoStream;
+//	MediaStream audioStream;*/
+//
+//	bool running = false;
+//	FMOD_CHANNELGROUP * cg = NULL;
+//
+//	float videoVolume = 1;
+//	std::vector<_channel> videoSounds = {};
+//	std::vector<_channel> videoSoundChannels = {};
+//	std::vector<double> soundTime;
+//	double soundDelay = 0;
+//	double soundRate = 48.0;
+//	FMOD_SYSTEM * soundSystem = NULL;
+//	void * b = NULL;
+//
+//	std::vector<_image> image = {};
+//	AVFrame * sFrame = NULL;
+//	SwsContext * swsContext = NULL;
+//
+//	std::vector<double> videoTime;
+//	SDL_Rect rect;
+//	bool fullScreen = true;
+//	int loop = 0;
+//
+//	bool pausedBeforePause = false;
+//	bool decodeEnd = false;
+//	double totalTime = 0;
+//	TimeEx time;
+//	bool stopped = false;
+//};
 
-	AVFrame * frame = NULL;
-	AVStream * stream = NULL;
-	AVCodecContext * codecCtx = NULL;
-	AVCodec * codec = NULL;
-
-	bool setTS = false;
-
-	double totalTime = 0;
-	double timePerFrame = 0;
-	double timeBasePacket = 0;
-	double startTime = 0;
-	bool decodeEnd = false;
-	int index = -1;
-	bool stopped = false;
-};
-
-struct VideoStruct
-{
-	std::string fileName;
-
-	char * buffer = NULL;
-
-	MediaStream videoStream;
-	MediaStream audioStream;
-
-	bool running = false;
-	FMOD_CHANNELGROUP * cg = NULL;
-
-	float videoVolume = 1;
-	std::vector<_channel> videoSounds = {};
-	std::vector<_channel> videoSoundChannels = {};
-	std::vector<double> soundTime;
-	double soundDelay = 0;
-	double soundRate = 48.0;
-	FMOD_SYSTEM * soundSystem = NULL;
-	void * b = NULL;
-
-	std::vector<_image> image = {};
-	AVFrame * sFrame = NULL;
-	SwsContext * swsContext = NULL;
-
-	std::vector<double> videoTime;
-	SDL_Rect rect;
-	bool fullScreen = true;
-	int loop = 0;
-
-	bool pausedBeforePause = false;
-	bool decodeEnd = false;
-	double totalTime = 0;
-	TimeEx time;
-	bool stopped = false;
-};
-
-typedef VideoStruct* video_;
+//typedef VideoStruct* video_;
 
 typedef std::function<void(uint8_t*, int)> AudioCallback;
 
@@ -349,25 +349,25 @@ public:
 
 	//FFMPEG��Ƶ����
 private:
-	const int videoConvertSize = 192000;
+	/*const int videoConvertSize = 192000;
 	int initVideo();
 	void destroyVideo();
-	void freeMediaStream(MediaStream * mediaStream);
+	void freeMediaStream(MediaStream * mediaStream);*/
 	
 	//�����д�����video�ڴ���ʱ�Զ�����videoList�б���
 	//�������ص���������ʱ����б������е�video���õ���������video�е���һ֡audio����
-	std::vector<video_> videoList;
+	/*std::vector<video_> videoList;
 	void clearVideoList();
 	void addVideoToList(_video video);
 	void deleteVideoFromList(_video video);
-	void deleteVideoFromList(int index);
+	void deleteVideoFromList(int index);*/
 	
 	static FMOD_RESULT F_CALLBACK audioCallback(FMOD_CHANNELCONTROL *chanControl, FMOD_CHANNELCONTROL_TYPE controlType, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType, void *commandData1, void *commandData2);
-	static int convert(AVCodecContext* codecCtx, AVFrame* frame, int out_sample_format, int out_sample_rate, int out_channels, uint8_t* out_buf);
+	//static int convert(AVCodecContext* codecCtx, AVFrame* frame, int out_sample_format, int out_sample_rate, int out_channels, uint8_t* out_buf);
 
-	int openVideoFile(_video video);
-	void setMediaStream(MediaStream * mediaStream, std::string& fileName, AVMediaType mediaType);
-	double initVideoTime(_video video);
+	//int openVideoFile(_video video);
+	//void setMediaStream(MediaStream * mediaStream, std::string& fileName, AVMediaType mediaType);
+	/*double initVideoTime(_video video);
 	void setVideoTimePaused(_video video, bool paused);
 	double setVideoTime(_video video, double time);
 	double getVideoSoundRate(_video video);
@@ -381,10 +381,10 @@ private:
 	
 	void tryDecodeVideo(_video video);
 
-	_music createVideoRAW(FMOD_SYSTEM * system, char * data, int size, bool loop, bool music3d, FMOD_SOUND_FORMAT format, int numchannels, int defaultfrequency, unsigned char priority = 128);
+	_music createVideoRAW(FMOD_SYSTEM * system, char * data, int size, bool loop, bool music3d, FMOD_SOUND_FORMAT format, int numchannels, int defaultfrequency, unsigned char priority = 128);*/
 
 public:
-	_video createNewVideo(const std::string& fileName);
+	/*_video createNewVideo(const std::string& fileName);
 	void setVideoRect(_video video, Rect * rect);
 	void freeVideo(_video video);
 	void runVideo(_video video);
@@ -398,7 +398,7 @@ public:
 	double getVideoTime(_video video);
 
 	void setVideoLoop(_video video, int loop);
-	bool getVideoStopped(_video video);
+	bool getVideoStopped(_video video);*/
 	//ÿһ֡��ʼ�ͽ�β���Ĵ������������
 public:	
 	void frameBegin();

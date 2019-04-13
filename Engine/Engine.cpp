@@ -836,72 +836,72 @@ void Engine::resumeTalk()
 	engineBase->resumeMusic(channelTalk);
 }
 
-_video Engine::createNewVideo(const std::string & fileName)
-{
-	return engineBase->createNewVideo(fileName);
-}
-
-void Engine::setVideoRect(_video v, Rect * rect)
-{
-	engineBase->setVideoRect(v, rect);
-}
-
-void Engine::freeVideo(_video v)
-{
-	engineBase->freeVideo(v);
-}
-
-void Engine::runVideo(_video v)
-{
-	engineBase->runVideo(v);
-}
-
-bool Engine::updateVideo(_video v)
-{
-	return engineBase->updateVideo(v);
-}
-
-void Engine::drawVideoFrame(_video v)
-{
-	engineBase->drawVideoFrame(v);
-}
-
-bool Engine::onVideoFrame(_video v)
-{
-	return engineBase->onVideoFrame(v);
-}
-
-void Engine::pauseVideo(_video v)
-{
-	engineBase->pauseVideo(v);
-}
-
-void Engine::resumeVideo(_video v)
-{
-	engineBase->resumeVideo(v);
-}
-
-void Engine::stopVideo(_video v)
-{
-	engineBase->stopVideo(v);
-}
-
-void Engine::resetVideo(_video v)
-{
-	engineBase->resetVideo(v);
-}
-
-void Engine::setVideoLoop(_video v, int loop)
-{
-	engineBase->setVideoLoop(v, loop);
-}
-
-bool Engine::getVideoStopped(_video v)
-{
-	return engineBase->getVideoStopped(v);
-}
-
-double Engine::getVideoTime(_video v)
-{
-	return engineBase->getVideoTime(v);
-}
+//_video Engine::createNewVideo(const std::string & fileName)
+//{
+//	return engineBase->createNewVideo(fileName);
+//}
+//
+//void Engine::setVideoRect(_video v, Rect * rect)
+//{
+//	engineBase->setVideoRect(v, rect);
+//}
+//
+//void Engine::freeVideo(_video v)
+//{
+//	engineBase->freeVideo(v);
+//}
+//
+//void Engine::runVideo(_video v)
+//{
+//	engineBase->runVideo(v);
+//}
+//
+//bool Engine::updateVideo(_video v)
+//{
+//	return engineBase->updateVideo(v);
+//}
+//
+//void Engine::drawVideoFrame(_video v)
+//{
+//	engineBase->drawVideoFrame(v);
+//}
+//
+//bool Engine::onVideoFrame(_video v)
+//{
+//	return engineBase->onVideoFrame(v);
+//}
+//
+//void Engine::pauseVideo(_video v)
+//{
+//	engineBase->pauseVideo(v);
+//}
+//
+//void Engine::resumeVideo(_video v)
+//{
+//	engineBase->resumeVideo(v);
+//}
+//
+//void Engine::stopVideo(_video v)
+//{
+//	engineBase->stopVideo(v);
+//}
+//
+//void Engine::resetVideo(_video v)
+//{
+//	engineBase->resetVideo(v);
+//}
+//
+//void Engine::setVideoLoop(_video v, int loop)
+//{
+//	engineBase->setVideoLoop(v, loop);
+//}
+//
+//bool Engine::getVideoStopped(_video v)
+//{
+//	return engineBase->getVideoStopped(v);
+//}
+//
+//double Engine::getVideoTime(_video v)
+//{
+//	return engineBase->getVideoTime(v);
+//}

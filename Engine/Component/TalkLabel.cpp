@@ -3,7 +3,7 @@
 #endif 
 #include "TalkLabel.h"
 
-
+#pragma warning(disable:4267)
 
 TalkLabel::TalkLabel()
 {

@@ -396,8 +396,13 @@ std::string convert::unicodeToGBK(const std::wstring& unicodeStr)
 	std::string s = c;	
 	return conv(s, "utf-16", "cp936");
 #else
+
+#if _WIN32
 	std::wstring_convert<std::codecvt_byname<wchar_t, char, mbstate_t>> cvt(new std::codecvt_byname<wchar_t, char, mbstate_t>(GBKName));
 	std::string str = cvt.to_bytes(unicodeStr);
+#else
+	std::string str;
+#endif
 	return str;
 #endif // _USE_LIBICONV
 
@@ -414,8 +419,13 @@ std::wstring convert::GBKToUnicode(const std::string& str)
 	std::wstring ret = c;
 	return ret;
 #else
+
+#if _WIN32
 	std::wstring_convert<std::codecvt_byname<wchar_t, char, mbstate_t>> cvt(new std::codecvt_byname<wchar_t, char, mbstate_t>(GBKName));
 	std::wstring wstr = cvt.from_bytes(str);
+#else
+    std::wstring wstr;
+#endif
 	return wstr; 
 #endif // _USE_LIBICONV
 }

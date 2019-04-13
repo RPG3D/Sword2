@@ -1,6 +1,6 @@
 #include "MemoText.h"
 
-
+#pragma warning(disable:4267)
 
 MemoText::MemoText()
 {

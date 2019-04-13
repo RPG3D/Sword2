@@ -2,6 +2,8 @@
 #include "File/PakFile.h"
 #include <cmath>
 
+#pragma warning(disable:4267)
+
 EngineBase* EngineBase::this_ = NULL;
 
 EngineBase::EngineBase()

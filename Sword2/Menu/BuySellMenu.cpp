@@ -1,6 +1,8 @@
 #include "BuySellMenu.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
+
 BuySellMenu * BuySellMenu::this_ = NULL;
 
 BuySellMenu::BuySellMenu()

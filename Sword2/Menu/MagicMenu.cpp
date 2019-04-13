@@ -1,6 +1,7 @@
 #include "MagicMenu.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
 
 MagicMenu::MagicMenu()
 {

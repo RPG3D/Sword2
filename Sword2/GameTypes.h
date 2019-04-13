@@ -3,6 +3,8 @@
 #include <deque>
 #include "Image/IMP.h"
 
+#pragma warning(disable:26495)
+
 #define TILE_WIDTH 64
 #define TILE_HEIGHT 32
 

@@ -1,6 +1,8 @@
 #include "CollisionDetector.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
+
 void CollisionDetector::detectCollision()
 {
 	std::vector<NPC *> collisionList = {};

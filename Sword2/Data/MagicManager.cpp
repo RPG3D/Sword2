@@ -3,6 +3,8 @@
 #include "libconvert/libconvert.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
+
 MagicManager::MagicManager()
 {
 }

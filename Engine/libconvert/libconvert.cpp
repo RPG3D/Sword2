@@ -33,6 +33,8 @@
 //#define fopen fopen_s
 #endif
 
+#pragma warning(disable:4267)
+
 std::string convert::readStringFromFile(const std::string& filename)
 {
     FILE* fp = fopen(filename.c_str(), "rb");

@@ -1,6 +1,7 @@
 #include "GoodsManager.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
 
 GoodsManager::GoodsManager()
 {

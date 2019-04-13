@@ -15,6 +15,8 @@
 #include "INIReader.h"
 #include "../libconvert/libconvert.h"
 
+#pragma warning(disable:4267)
+
 using std::string;
 
 INIReader::INIReader()

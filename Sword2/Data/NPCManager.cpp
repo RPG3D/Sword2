@@ -1,6 +1,7 @@
 #include "NPCManager.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
 
 NPCManager::NPCManager()
 {

@@ -1,6 +1,7 @@
 #include "EffectManager.h"
 #include "../Config/Config.h"
 
+#pragma warning(disable:4267)
 
 EffectManager::EffectManager()
 {

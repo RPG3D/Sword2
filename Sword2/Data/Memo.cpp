@@ -2,6 +2,8 @@
 #include "../GameManager/GameManager.h"
 #include "../Config/Config.h"
 
+#pragma warning(disable:4267)
+
 Memo::Memo()
 {
 	memo.resize(0);

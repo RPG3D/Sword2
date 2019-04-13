@@ -2,6 +2,8 @@
 #include "../GameManager/GameManager.h"
 #include "Option.h"
 
+#pragma warning(disable:4267)
+
 BottomMenu::BottomMenu()
 {
 	init();

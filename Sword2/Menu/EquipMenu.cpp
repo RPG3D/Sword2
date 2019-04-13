@@ -1,6 +1,7 @@
 #include "EquipMenu.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
 
 EquipMenu::EquipMenu()
 {

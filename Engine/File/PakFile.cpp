@@ -4,6 +4,8 @@
 
 #include "PakFile.h"
 
+#pragma warning(disable:4101)
+
 std::vector<std::string> PakFile::pakList = {};
 Engine* PakFile::engine = Engine::getInstance();
 PakFile PakFile::pakFile;

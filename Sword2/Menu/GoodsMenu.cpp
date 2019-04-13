@@ -2,6 +2,8 @@
 #include "../GameManager/GameManager.h"
 #include "BuySellMenu.h"
 
+#pragma warning(disable:4267)
+
 GoodsMenu::GoodsMenu()
 {
 	init();

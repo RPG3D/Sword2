@@ -1,6 +1,7 @@
 #include "PartnerManager.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:4267)
 
 PartnerManager::PartnerManager()
 {

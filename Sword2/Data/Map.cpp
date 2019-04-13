@@ -1,6 +1,9 @@
 #include "Map.h"
 #include "../GameManager/GameManager.h"
 
+#pragma warning(disable:26451)
+#pragma warning(disable:4267)
+
 #ifdef pi
 #undef pi
 #endif // pi

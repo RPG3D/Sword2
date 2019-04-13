@@ -1,6 +1,6 @@
 #include "Label.h"
 
-
+#pragma warning(disable:4267)
 
 Label::Label()
 {

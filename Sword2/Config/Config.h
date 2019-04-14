@@ -27,14 +27,19 @@ public:
 
 	std::string getAssetDir() const
 	{
-		return AssetDir;
+#if _WIN32
+		return AssetDirWin;
+#elif ANDROID
+		return AssetDirAndroid;
+#endif
 	}
 
 private:
 	static Config config;
 	static Config * this_;
 
-	std::string AssetDir = "D:/Sword2Data/";
+	std::string AssetDirWin = "D:/Sword2Data/";
+	std::string AssetDirAndroid = "/storage/emulated/0/Sword2Data/";
 
 	int windowWidth = DEFAULT_WINDOW_WIDTH;
 	int windowHeight = DEFAULT_WINDOW_HEIGHT;

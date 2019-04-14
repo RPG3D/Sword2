@@ -2,12 +2,17 @@ package com.github.rpg3d.sword2android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
     static {
+        System.loadLibrary("z");
+        System.loadLibrary("SDL2");
+        System.loadLibrary("Sword2");
         System.loadLibrary("native-lib");
     }
 
@@ -19,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+
+        Button btn = findViewById(R.id.btnRunGame);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runGame();
+            }
+        });
     }
 
     /**
@@ -26,4 +39,6 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+
+    public native void runGame();
 }

@@ -25,10 +25,10 @@ set(SKIP_INSTALL_ALL true)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../zlib)
 
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/libpng-1.6.32)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/libpng)
 
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/libpng-1.6.32)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/libpng)
 
 
 ##### library generation #####

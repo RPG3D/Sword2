@@ -1,10 +1,10 @@
 #include "EngineBase.h"
 #include "File/PakFile.h"
-#include "SDL_image.h"
-#include "fmod.h"
 #include <cmath>
 
 #pragma warning(disable:4267)
+
+using namespace FMOD;
 
 EngineBase* EngineBase::this_ = NULL;
 

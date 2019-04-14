@@ -10,21 +10,13 @@ SDL��FMOD��FFMPEG�ȵײ㶼��װ�����
 #include "libconvert/libconvert.h"
 #include "Types/Types.h"
 
-#include "fmod.h"
+#include "fmod.hpp"
 
 extern "C"
 {
-#include "sdl.h"
-#include "sdl_image.h"
-#include "sdl_ttf.h"
-
-//#include "libavcodec/avcodec.h"
-//#include "libavutil/avutil.h"
-//#include "libavformat/avformat.h"
-//#include "libswresample/swresample.h"
-//#include "libavutil/opt.h"
-//#include "libavutil/imgutils.h"
-//#include "libswscale/swscale.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
 }
 
 #include <string>

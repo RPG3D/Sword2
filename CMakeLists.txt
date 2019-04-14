@@ -7,7 +7,12 @@ include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/Engine)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty)
 
-include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Fmod/include)
+if(WIN32)
+	include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Fmod/include)
+elseif(ANDROID)
+	include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Fmod_Android/include)
+endif()
+
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2/include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_image)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/freetype/include)

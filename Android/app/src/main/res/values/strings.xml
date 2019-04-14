@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sword2Android</string>
+    <string name="rungame">RunGame</string>
 </resources>

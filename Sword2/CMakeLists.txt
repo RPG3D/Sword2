@@ -26,7 +26,7 @@ if(WIN32)
         ${PROJECT_SOURCE_DIR}/ThirdParty/SDL2_ttf/Debug
         ${PROJECT_SOURCE_DIR}/build/ThirdParty/freetype/Debug
         ${PROJECT_SOURCE_DIR}/build/ThirdParty/zlib/Debug
-        ${PROJECT_SOURCE_DIR}/build/ThirdParty/SDL_image/libpng-1.6.32/Debug
+        ${PROJECT_SOURCE_DIR}/build/ThirdParty/SDL_image/libpng/Debug
     )
 
     #windows lib
@@ -53,27 +53,51 @@ elseif(ANDROID)
         ${PROJECT_BINARY_DIR}/ThirdParty/SDL2_image
         ${PROJECT_BINARY_DIR}/ThirdParty/SDL2_ttf
         ${PROJECT_BINARY_DIR}/ThirdParty/freetype
-        ${PROJECT_BINARY_DIR}/ThirdParty/SDL_image/external/libpng-1.6.32d
+        ${PROJECT_BINARY_DIR}/ThirdParty/SDL_image/external/libpng
+		
     )
 
     link_libraries(SDL2)
     link_libraries(z)
-    link_libraries(png_static)
+    #link_libraries(png_static)
+
+    message(LibPngDir:${PROJECT_BINARY_DIR}/ThirdParty/SDL_image/external/libpng)
 
     #dmod lib
-    #link_libraries(fmod)
-    #link_libraries(fmodL)
-
+    add_library(fmod SHARED IMPORTED)
+	set_target_properties(fmod
+		PROPERTIES
+		IMPORTED_LOCATION
+		${PROJECT_SOURCE_DIR}/Android/app/src/main/jniLibs/${ANDROID_ABI}/libfmod.so
+	)
+	
+    add_library(fmodL SHARED IMPORTED)
+	set_target_properties(fmodL
+		PROPERTIES
+		IMPORTED_LOCATION
+		${PROJECT_SOURCE_DIR}/Android/app/src/main/jniLibs/${ANDROID_ABI}/libfmodL.so
+    )
+    
+    link_libraries(fmod)
+    link_libraries(fmodL)
+	
 endif()
 
-link_libraries(Lua)
-
-link_libraries(SDL2_image)
-link_libraries(SDL2_ttf)
 
 
 #game engine lib
 link_libraries(Engine)
+
+link_libraries(Lua)
+
+link_libraries(SDL2_image)
+
+if(ANDROID)
+    link_libraries(png_static)
+endif()
+
+link_libraries(SDL2_ttf)
+
 
 if(WIN32)
     add_executable(Sword2 ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS} )

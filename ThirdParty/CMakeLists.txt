@@ -7,6 +7,8 @@ add_subdirectory(zlib)
 
 add_subdirectory(SDL2)
 
+add_subdirectory(SDL2/src/hidapi)
+
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/zlib/Debug)
 
 add_subdirectory(SDL2_image)

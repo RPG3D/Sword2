@@ -1,1 +1,1 @@
-include ':Sword2Android'
+include ':Sword2Android', ':app'

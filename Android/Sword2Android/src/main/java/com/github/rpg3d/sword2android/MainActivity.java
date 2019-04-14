@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import org.libsdl.app.*;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SDLActivity {
 
     // Used to load the 'native-lib' library on application startup.
     static {

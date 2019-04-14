@@ -68,14 +68,14 @@ elseif(ANDROID)
 	set_target_properties(fmod
 		PROPERTIES
 		IMPORTED_LOCATION
-		${PROJECT_SOURCE_DIR}/Android/app/src/main/jniLibs/${ANDROID_ABI}/libfmod.so
+		${PROJECT_SOURCE_DIR}/Android/Sword2Android/src/main/jniLibs/${ANDROID_ABI}/libfmod.so
 	)
 	
     add_library(fmodL SHARED IMPORTED)
 	set_target_properties(fmodL
 		PROPERTIES
 		IMPORTED_LOCATION
-		${PROJECT_SOURCE_DIR}/Android/app/src/main/jniLibs/${ANDROID_ABI}/libfmodL.so
+		${PROJECT_SOURCE_DIR}/Android/Sword2Android/src/main/jniLibs/${ANDROID_ABI}/libfmodL.so
     )
     
     link_libraries(fmod)

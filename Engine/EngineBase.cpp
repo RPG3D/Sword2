@@ -1541,6 +1541,7 @@ InitErrorType EngineBase::initSDL(const std::string & windowCaption, int wWidth,
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING))
 	{
+		const char* ErrorMsg = SDL_GetError();
 		return sdlError;
 	}
 	SDL_ShowCursor(0);

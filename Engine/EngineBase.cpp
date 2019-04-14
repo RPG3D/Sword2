@@ -1567,6 +1567,8 @@ InitErrorType EngineBase::initSDL(const std::string & windowCaption, int wWidth,
 		flags |= SDL_WINDOW_HIDDEN;
 	}
 
+	flags |= SDL_WINDOW_VULKAN;
+
 	window = SDL_CreateWindow(windowCaption.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dm.w, dm.h, flags);
 
 	if (fullScreen)

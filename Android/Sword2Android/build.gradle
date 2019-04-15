@@ -47,5 +47,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/fmod.jar')
     implementation project(':app')
-    implementation 'com.android.support:appcompat-v7:26+'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 }

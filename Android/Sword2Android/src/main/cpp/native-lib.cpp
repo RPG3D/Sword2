@@ -12,7 +12,7 @@ Java_com_github_rpg3d_sword2android_MainActivity_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
-extern "C" JNIEXPORT jstring JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_github_rpg3d_sword2android_MainActivity_runGame(JNIEnv* env, jobject /* this */)
 {
     void* handle = dlopen("libvulkan.so", RTLD_NOW|RTLD_LOCAL);
